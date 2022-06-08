@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "serve": "nodemon app.js"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.3.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-body": "^2.5.0",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^10.1.1",
+    "nodemon": "^2.0.16",
+    "npm": "^8.10.0",
+    "pg": "^8.7.3",
+    "rxjs": "^7.5.5",
+    "sequelize": "^6.20.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
+}

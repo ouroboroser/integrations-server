@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "rxhelperdb",
+    "password": "rxHelperDB",
+    "database": "rxhelperdb",
+    "host": "35.184.20.148",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "doadmin",
+    "password": "AVNS_RzG6VvSGtfUmKF13XNp",
+    "database": "database_test",
+    "host": "rx-helper-db-do-user-11746957-0.b.db.ondigitalocean.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "doadmin",
+    "password": "AVNS_RzG6VvSGtfUmKF13XNp",
+    "database": "database_production",
+    "host": "rx-helper-db-do-user-11746957-0.b.db.ondigitalocean.com",
+    "dialect": "postgres"
+  }
+}
