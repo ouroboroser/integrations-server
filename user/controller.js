@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const models = require('../models');
+const { dataProtection } = require('../services/dataProtection');
 
 const signUp = async (ctx) => {
   const { email, password } = ctx.request.body;
@@ -10,11 +11,11 @@ const signUp = async (ctx) => {
     ctx.throw(400, 'user with this mail already exists');
   };
     
-  const hashedPass = bcrypt.hashSync(password, 15);
+  const hashedPass = await dataProtection.kmsEncrypt(password);
     
   const createdUser = await models.User.create({
     email,
-    password: hashedPass,
+    password: hashedPass
   });
   
   ctx.status = 201;
@@ -29,21 +30,23 @@ const signIn = async (ctx) => {
     ctx.throw(400, 'user with this mail do not exists');
   };
   
-  const pass = bcrypt.compareSync(password, user.password);
+  const pass = await dataProtection.kmsDecrypt(user.dataValues.password);
+
+  console.log('pass', pass);
   
-  if (pass) {
-    const payload = {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-    };
+  // if (pass) {
+  //   const payload = {
+  //     id: user.id,
+  //     username: user.username,
+  //     email: user.email,
+  //   };
     
-    const token = jwt.sign(payload, config.secret, {
-      expiresIn: config.expired,
-    });
+  //   const token = jwt.sign(payload, config.secret, {
+  //     expiresIn: config.expired,
+  //   });
     
-    ctx.body = token;
-  }
+  //   ctx.body = token;
+  // }
 };
 
 module.exports = {

@@ -3,6 +3,7 @@
     "serve": "nodemon app.js"
   },
   "dependencies": {
+    "@google-cloud/kms": "^3.0.0",
     "@koa/cors": "^3.3.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",

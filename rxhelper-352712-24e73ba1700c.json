@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "rxhelper-352712",
+  "private_key_id": "24e73ba1700c162ddccaac22be55ffe927f0c1a8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC6EHdVvElBbx6x\nxTuHdVJG9ff0+MAbSP7kGCIdBUHeZBfjKc0Cxoq9cg/yaB8bDEgr4uLnHjPDJzZp\na72xAV9eJbmlL/T/CFnsOuR8Zpm2lIJmKKE6hfM2+ljvrU2pGvSLo13TnlzsviMi\nOvbsW1GqmFNFiU+Sb+dmGj0Ky9M331HmHepHne/6w3kVJK85+01N5mcN2C6jKZVx\nbfxc5kZthwjRQhCY6lMq+CDJtVF8EvV2BjiynQ4kEl4WsvRRJwcXuznGYuA0Vqck\nbz6qxm/6D9STB0iqvgTuhNHBDmeYKtXZKhyliOj5/vGhQHWxNDLQoPRICn245qgH\nuGK69jZ9AgMBAAECggEAA33oHhaJbGjcs1rfeLW8XHhkwHbuSgTMbcpAfPlv3e/U\ncpmtTy+b2R17zEw6cIxCNXqi+1HkiErN2VwhhEx24PeFx00XWgrq1HAFgN/UY39g\nKXElQh8oluqgrSd8NTUm4OZTuN3jDLlZGPJw1wjesebSbJQSB3jsp4yiAngb8mje\nZCYfM9Dnj71nrDRDigI24gTSjJrf37qBEjP9/KqWbql87M+0emFFMX5cMn82ZrGr\nszNCSZyDzm1HH+WW1BCjdDYH9b+KFB2ZzQKgh1DS/1zXi4Kp5VlxuTXUC2OgTBx3\n309UXyj+85Wc5R8gH/vGVJ6/k4M3KIr8k4Sk3gaq4QKBgQDch8lFKYN+RWu+d5ps\neapOSB4o40jFZBQu9RMu/RQMegOp8ZprkrChwqf8VwlKZqDcjNK5xpS5JMY4Vz2+\nIya1W+uFeh7OcBYEhTfVbejT/zSK7cotY1AHcNh0LV+u3/2lPjyxq42q5DDBEBmr\ny7E3y2ChEPdwxxSSR9C5qOGgoQKBgQDX/Y7nfmrHVGOg9MznKcIO8vjHPopipq2T\n/dMWXX+tOn1VaQDBv3Tpf9teUw2HnWsTwGVmoX0ZxmePSuwITcjqDp8D1mv3DqTf\nwi6tpHKyXlklvJOpeTWaRy5H/RtREPbQzQxS/XF/SXa9Hp2spZ1rO2v1tD9DUg6h\nTy8GlCVcXQKBgGNXP5FKPBObjgeEtSl8PP16eyuMBvH0PStR9sxJ8MgWBqR9U0R2\nFd8oYqfHRUYgqQHw5dQN4lzsdeZXVlbaWsuDlrrP4iS4VRLAOACKvEETS0XyDAsa\nG6jeaoMbFWkfOZFAUfLvBqgelt/BMu8ymKg7k1G65NwGsfubIikgLFNBAoGAdvOo\nySshKWf7eoB3fHPN8Se1BR4XXp9HBzMKFs4la8TDk89BYHLNs2775GW/FMoIV5dl\nAPG9EP3ouMzdUvFrziOBRb7INQb2nFi4Fl9z33IAjLzfYb1kXPQItBLcAXhjRbk3\nqVj1MdHGt/7tfVC0coMGQQoksTG25vXSA0CBlu0CgYAe6lJKdeo+CsuTGx61W5OI\n4kFuIShRg/9AWXKLPP1TUtRxU2i2etUH2kku45EpURju0S8U9ZXLpq0r7lvYCcdI\neENlHSyJ+6plfl5zh68f4iwrVHnLNfCBtXyPv3rapn1cKIULJEcJbgr2j2iz5CbC\nIsEt5XuS0MPbyUbX5Pfpkw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "rxhelper@rxhelper-352712.iam.gserviceaccount.com",
+  "client_id": "113794117107986980471",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rxhelper%40rxhelper-352712.iam.gserviceaccount.com"
+}
