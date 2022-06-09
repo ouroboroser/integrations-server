@@ -1,12 +1,10 @@
 const { KeyManagementServiceClient } = require('@google-cloud/kms');
-const { toArrayBuffer } = require('../helpers/convertArray');
-
 const client = new KeyManagementServiceClient();
 
 class DataProtection {
 
     async kmsEncrypt(password) {
-        const keyName = 'projects/rxhelper-352712/locations/global/keyRings/rxHelper/cryptoKeys/rxHelperDataProtectionClass/cryptoKeyVersions/1'
+        const keyName = process.env.KMS_ENCRYPT;
         
         const [encryptResponse] = await client.encrypt({
             name: keyName,
@@ -17,7 +15,7 @@ class DataProtection {
     };
 
     async kmsDecrypt(password) {
-        const keyName = 'projects/rxhelper-352712/locations/global/keyRings/rxHelper/cryptoKeys/rxHelperDataProtectionClass'
+        const keyName = process.env.KMS_DECRYPT;
 
         const [decryptResponse] = await client.decrypt({
             name: keyName,

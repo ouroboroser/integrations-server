@@ -1,0 +1,1 @@
+export GOOGLE_APPLICATION_CREDENTIALS="/home/evgeniia/study/rxVisualizer/layerInteractingWithServices/rxhelper-352712-24e73ba1700c.json"

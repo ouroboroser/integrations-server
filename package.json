@@ -13,13 +13,16 @@
     "koa-body": "^2.5.0",
     "koa-cors": "^0.0.16",
     "koa-router": "^10.1.1",
+    "md5": "^2.3.0",
     "nodemon": "^2.0.16",
     "npm": "^8.10.0",
     "pg": "^8.7.3",
     "rxjs": "^7.5.5",
-    "sequelize": "^6.20.1"
+    "sequelize": "^6.20.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "prettier": "2.6.2",
     "sequelize-cli": "^6.4.1"
   }
 }
