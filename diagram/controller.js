@@ -1,6 +1,9 @@
+const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 const { diagram } = require('../services/diagram');
 const models = require('../models');
 const { errorMsg } = require('../errorMsg');
+const { upload } = require('../libs/s3');
 
 const createApiKey = async (ctx) => {
     const id = ctx.state.user.id;
@@ -29,6 +32,17 @@ const createApiKey = async (ctx) => {
     }
 };
 
+const uploadDiagramInJSONFormat = async (ctx) => {
+    const file = ctx.request.body.files.diagram;
+    const diagram = fs.readFileSync(file.path);
+    
+    const title = uuidv4();
+    const link = await upload(title, diagram);
+
+    console.log('link', link);
+};
+
 module.exports = {
-    createApiKey
+    createApiKey,
+    uploadDiagramInJSONFormat
 };

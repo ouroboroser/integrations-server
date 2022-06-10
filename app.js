@@ -17,7 +17,10 @@ router.get('/', async (ctx) => {
     ctx.body = 'OK';
 });
 
-app.use(bodyParser());
+app.use(bodyParser({
+    multipart: true,
+    urlencoded: true
+}));
 app.use(cors());
 app.use(router.routes()).use(router.allowedMethods());
 
