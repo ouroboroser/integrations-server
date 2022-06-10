@@ -35,6 +35,8 @@ const createApiKey = async (ctx) => {
 const uploadDiagramInJSONFormat = async (ctx) => {
     const file = ctx.request.body.files.diagram;
     const diagram = fs.readFileSync(file.path);
+
+    console.log('dia', diagram);
     
     const title = uuidv4();
     const link = await upload(title, diagram);
