@@ -1,15 +1,18 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Diagrams', {
+    await queryInterface.createTable('ApiKeys', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      link: {
+      key: {
         type: Sequelize.STRING
+      },
+      disable: {
+        type: Sequelize.BOOLEAN
       },
       developerId: {
         type: Sequelize.INTEGER
@@ -25,6 +28,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Diagrams');
+    await queryInterface.dropTable('ApiKeys');
   }
 };

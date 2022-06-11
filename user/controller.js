@@ -25,7 +25,7 @@ const signUp = async (ctx) => {
   ctx.body = {
     id: createdDeveloper.id,
     email: createdDeveloper.email,
-    username: developer.username,
+    username: createdDeveloper.username,
     token: createAccessToken(createdDeveloper)
   }
 };

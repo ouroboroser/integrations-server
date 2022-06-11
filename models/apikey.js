@@ -1,7 +1,7 @@
 'use strict';
-
-const { Model } = require('sequelize');
-
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class ApiKey extends Model {
     /**
@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   ApiKey.init({
     key: DataTypes.STRING,
+    disable: DataTypes.BOOLEAN,
     developerId: DataTypes.INTEGER
   }, {
     sequelize,
