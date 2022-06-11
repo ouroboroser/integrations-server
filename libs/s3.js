@@ -1,17 +1,13 @@
 const aws = require('aws-sdk');
 
 const upload = (title, file) => {
-  console.log('work 1');
-
-  const spacesEndpoint = new aws.Endpoint('fra1.digitaloceanspaces.com');
+  const spacesEndpoint = new aws.Endpoint(process.env.S3_END_POINT);
   
   const s3 = new aws.S3({
     endpoint: spacesEndpoint,
-    accessKeyId: 'EED5W5BHFXRTU2NP2YQD',
-    secretAccessKey: 'dhQYBa23O6610RK27Q46Q+V/dEzCYJQMXnAkugG78Mo',
+    accessKeyId: process.env.S3_ACCESS_KEY,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
   });
-
-  console.log('work 2');
   
   const options = {
     Bucket: 'rxhelper',
@@ -19,8 +15,6 @@ const upload = (title, file) => {
     Key: `diagramsJSON/${title}.json`,
     Body: file,
   };
-
-  console.log('work 3');
   
   return new Promise((res, rej) => {
     s3.upload(options).send((e, data) => {

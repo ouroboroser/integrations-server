@@ -1,6 +1,6 @@
 const errorMsg = {
-    userIsAlreadyExists: 'user with this mail already exists',
-    userIsNotExists: 'user with this mail do not exists',
+    developerIsAlreadyExists: 'Developer with this mail already exists',
+    developerIsNotExists: 'Developer with this mail do not exists',
     incorrectPass: 'Incorrect password',
     notFound: 'Not found',
     userAlreadyCreatedApiKey: 'You have already created API key',

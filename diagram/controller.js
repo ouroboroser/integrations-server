@@ -6,25 +6,25 @@ const { errorMsg } = require('../errorMsg');
 const { upload } = require('../libs/s3');
 
 const createApiKey = async (ctx) => {
-    const id = ctx.state.user.id;
+    const id = ctx.state.developer.id;
 
-    const user = await models.User.findOne({ where: { id } });
+    const developer = await models.Developer.findOne({ where: { id } });
 
-    if (!user) {
+    if (!developer) {
         ctx.throw(404, errorMsg.notFound);
     };
 
-    const checkIfApiKeyIsAlreadyExists = await models.ApiKey.findOne({ where: { userId: id } });
+    const checkIfApiKeyIsAlreadyExists = await models.ApiKey.findOne({ where: { developerId: id } });
 
     if (checkIfApiKeyIsAlreadyExists) {
-        ctx.throw(400, errorMsg.userAlreadyCreatedApiKey);
+        ctx.throw(400, errorMsg.developerAlreadyCreatedApiKey);
     };
     
-    const apiKey = await diagram.generateApiKey(user);
+    const apiKey = await diagram.generateApiKey(developer);
     
     await models.ApiKey.create({
         key: apiKey,
-        userId: id
+        developerId: id
     });
 
     ctx.body = {
@@ -35,13 +35,11 @@ const createApiKey = async (ctx) => {
 const uploadDiagramInJSONFormat = async (ctx) => {
     const file = ctx.request.body.files.diagram;
     const diagram = fs.readFileSync(file.path);
-
-    console.log('dia', diagram);
     
     const title = uuidv4();
     const link = await upload(title, diagram);
 
-    console.log('link', link);
+    ctx.body = 200;
 };
 
 module.exports = {

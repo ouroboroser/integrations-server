@@ -6,9 +6,9 @@ const authenticate = async (ctx, next ) => {
     if (header) {
         const token = header.split(' ')[1];
         try {
-            const user = jwt.verify(token, process.env.JWT_SECRET);
-            if (user) {
-                ctx.state.user = user;
+            const developer = jwt.verify(token, process.env.JWT_SECRET);
+            if (developer) {
+                ctx.state.developer = developer;
                 await next();
             } else {
                 ctx.status = 401;
