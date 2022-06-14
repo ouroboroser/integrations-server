@@ -42,6 +42,54 @@ const createApiKey = async (ctx) => {
     }
 };
 
+const updateAPIKeyStatus = async (ctx) => {
+    const id = ctx.state.developer.id;
+    const apiKeyId = ctx.request.params.id;
+    
+    const developer = await models.Developer.findOne({ where: { id } });
+
+    if (!developer) {
+        ctx.throw(404, errorMsg.notFound);
+    };
+
+    const apiKey = await models.ApiKey.findOne({ where: { id: apiKeyId } });
+
+    if (!apiKey) {
+        ctx.throw(404, errorMsg.notFound);
+    };
+
+    apiKey.update({
+        disable: !apiKey.disable
+    });
+
+    ctx.status = 200;
+    ctx.body = apiKey;
+};
+
+const retrieveActiveAPIKey = async (ctx) => {
+    const id = ctx.state.developer.id;
+    
+    const developer = await models.Developer.findOne({ where: { id } });
+
+    if (!developer) {
+        ctx.throw(404, errorMsg.notFound);
+    };
+
+    const apiKey = await models.ApiKey.findOne({
+        where: {
+            [Op.and]: [
+                { disable: false },
+                { developerId: id }
+            ]
+        }
+    });
+
+    ctx.body = {
+        apiKey: apiKey ? apiKey.key: '',
+        apiKeyStatus: apiKey ? true : false,
+    };
+};
+
 const retrieveAllAPIKeys = async (ctx) => {
     const id = ctx.state.developer.id;
     
@@ -56,6 +104,21 @@ const retrieveAllAPIKeys = async (ctx) => {
             developerId: id
         }
     });
+
+    // const keysMapped = keys.map(key => {
+    //     const a = String(key.createdAt);
+
+    //     console.log('A', a);
+
+    //     return {
+    //         id: key.id,
+    //         key: key.key,
+    //         createdAt: String(key.createdAt).split('T')[0],
+    //         disable: true
+    //     };
+    // });
+
+    // console.log(keysMapped);
 
     ctx.body = keys;
 };
@@ -129,7 +192,9 @@ const retrieveSavedDiagrams = async (ctx) => {
 
 module.exports = {
     createApiKey,
+    updateAPIKeyStatus,
     uploadDiagramInJSONFormat,
     retrieveAllAPIKeys,
-    retrieveSavedDiagrams
+    retrieveSavedDiagrams,
+    retrieveActiveAPIKey
 };
