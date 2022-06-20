@@ -123,14 +123,8 @@ const retrieveAllAPIKeys = async (ctx) => {
     ctx.body = keys;
 };
 
-const uploadDiagramInJSONFormat = async (ctx) => {
-    const id = ctx.state.developer.id;
-    
-    const developer = await models.Developer.findOne({ where: { id } });
-
-    if (!developer) {
-        ctx.throw(404, errorMsg.notFound);
-    };
+const uploadDiagramInJSONFormat = async ctx => {
+    const developer = ctx.state.developer;
 
     const file = ctx.request.body.files.diagram;
     const diagram = fs.readFileSync(file.path);
@@ -141,14 +135,16 @@ const uploadDiagramInJSONFormat = async (ctx) => {
     await models.Diagram.create({
         key: title,
         link,
-        developerId: id,
+        developerId: developer.id
     });
 
     ctx.body = 200;
 };
 
 const retrieveSavedDiagrams = async (ctx) => {
+    
     const id = ctx.state.developer.id;
+    let response;
     
     const developer = await models.Developer.findOne({ where: { id } });
 
@@ -162,32 +158,25 @@ const retrieveSavedDiagrams = async (ctx) => {
         }
     });
 
-    const response = await Promise.all(diagrams.map((diagram) => {
-        return axios
-        .get(diagram.link)
-        .then(response => {
-            console.log('console.log', response.data);
+    if (diagrams.length > 0) {
+        response = await Promise.all(diagrams.map((diagram) => {
+            return axios
+            .get(diagram.link)
+            .then(response => {
+    
+                return {
+                    id: diagram.key,
+                    operations: response.data,
+                    data: diagram.createdAt,
+                }
+            })
+            .catch(e  => {
+                console.log(e);
+            });
+        }));
+    };
 
-            return {
-                id: diagram.key,
-                operations: response.data,
-                data: String(diagram.createdAt).split('T')[0]
-            }
-            
-            //console.log(response.data);
-            // return {
-            //     id: diagram.key,
-            //     data: diagram.createdAt,
-            //     operations: response.data,
-            // };
-            // //console.log(response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }));
-
-    ctx.body = response;
+    ctx.body = diagrams.length > 0 ? response : [];
 }; 
 
 module.exports = {
